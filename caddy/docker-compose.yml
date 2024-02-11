@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+  jklu_cyber_lab:
+    external: true
+    name: "jklu_cyber_lab"
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+services:
+  caddy:
+    container_name: jklu_caddy
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    networks:
+      - jklu_cyber_lab
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config

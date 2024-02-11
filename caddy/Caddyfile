@@ -1,0 +1,3 @@
+dvwa.jklu.local {
+	reverse_proxy dvwa:27000
+}

@@ -1,0 +1,35 @@
+volumes:
+  dvwa:
+
+networks:
+  jklu_cyber_lab:
+    external: true
+    name: "jklu_cyber_lab"
+
+services:
+  dvwa:
+    container_name: jklu_dvwa
+    build: .
+    image: ghcr.io/digininja/dvwa:latest
+    # Change `always` to `build` to build from local source
+    pull_policy: always
+    environment:
+      - DB_SERVER=db
+    depends_on:
+      - db
+    networks:
+      - jklu_cyber_lab
+    restart: unless-stopped
+
+  db:
+    image: docker.io/library/mariadb:10
+    environment:
+      - MYSQL_ROOT_PASSWORD=dvwa
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=p@ssw0rd
+    volumes:
+      - dvwa:/var/lib/mysql
+    networks:
+      - jklu_cyber_lab
+    restart: unless-stopped
