@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  jklu_cyber_lab:
+    external: true
+    name: "jklu_cyber_lab"
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: jklu_users
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./users_setup.sh:/root/users_setup.sh
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    command: bash -c "apt-get update && apt-get install -y sudo && /root/users_setup.sh && exec bash"
+    networks:
+      - jklu_cyber_lab
+    restart: unless-stopped
