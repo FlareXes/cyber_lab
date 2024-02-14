@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+   jklu_cyber_lab:
+     external: true
+     name: "jklu_cyber_lab"
+
+services:
+  parrotsec_set:
+    image: parrotsec/set
+    container_name: jklu_attacker
+    volumes:
+      - ./set:/root/.set
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    networks:
+      - jklu_cyber_lab
+    restart: unless-stopped
