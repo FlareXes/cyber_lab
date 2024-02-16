@@ -24,6 +24,7 @@ if [[ $1 == "up" ]]; then
 
     # Update /etc/hosts if entry does not exist
     grep -qxF "127.0.0.1  dvwa.jklu.local" /etc/hosts || echo "127.0.0.1  dvwa.jklu.local" >> /etc/hosts
+    grep -qxF "127.0.0.1  attacker.jklu.local" /etc/hosts || echo "127.0.0.1  attacker.jklu.local" >> /etc/hosts
 elif [[ $1 == "down" ]]; then
     for file in $(find . -type f -name 'docker-compose.yml'); do
         echo "Stopping containers in $file..."
