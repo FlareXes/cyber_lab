@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  kasm_attacker:
+    image: flarexes/jklu_kasm:latest
+    container_name: jklu_kasm_attacker
+    networks:
+      - jklu_cyber_lab
+    shm_size: 512m
+    environment:
+      - VNC_PW=password
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+networks:
+  jklu_cyber_lab:
+    external: true
+    name: "jklu_cyber_lab"
+
