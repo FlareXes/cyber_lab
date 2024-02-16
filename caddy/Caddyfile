@@ -2,8 +2,8 @@ dvwa.jklu.local {
 	reverse_proxy dvwa:27000
 }
 
-kasm.jklu.local {
-	reverse_proxy kasm_attacker:6901 {
+attacker.jklu.local {
+	reverse_proxy jklu_kasm_attacker:6901 {
 		transport http {
 			tls_insecure_skip_verify
 		}
