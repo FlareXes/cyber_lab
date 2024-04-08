@@ -1,5 +1,3 @@
-version: '3'
-
 networks:
    jklu_cyber_lab:
      external: true
