@@ -2,6 +2,10 @@ dvwa.jklu.local {
 	reverse_proxy dvwa:27000
 }
 
+gitlab.jklu.local {
+	redir http://0.0.0.0:8080
+}
+
 attacker.jklu.local {
 	reverse_proxy jklu_kasm_attacker:6901 {
 		transport http {
@@ -9,4 +13,3 @@ attacker.jklu.local {
 		}
 	}
 }
-

@@ -15,4 +15,3 @@ networks:
   jklu_cyber_lab:
     external: true
     name: "jklu_cyber_lab"
-
